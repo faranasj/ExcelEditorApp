@@ -60,6 +60,37 @@ namespace ExcelEditorApp
                     }
                 }
             }
+
+            Console.WriteLine("\nWould you like to add a new row? (y/n)");
+            string response = Console.ReadLine()!;
+
+            if (response.ToLower() == "y")
+            {
+                Console.WriteLine("Enter data separated by commas (e.g., 1,Jane,Doe):");
+                string[] rowData = Console.ReadLine()!.Split(',');
+
+                using (SpreadsheetDocument doc = SpreadsheetDocument.Open(filePath, true))
+                {
+                    WorkbookPart workbookPart = doc.WorkbookPart;
+                    Sheet sheet = workbookPart.Workbook.Descendants<Sheet>().First();
+                    WorksheetPart worksheetPart = (WorksheetPart)workbookPart.GetPartById(sheet.Id);
+                    SheetData sheetData = worksheetPart.Worksheet.Elements<SheetData>().First();
+
+                    Row newRow = new Row();
+
+                    foreach (string cellData in rowData)
+                    {
+                        Cell cell = new Cell()
+                        {
+                            DataType = CellValues.String,
+                            CellValue = new CellValue(cellData)
+                        };
+                        newRow.Append(cell);
+                    }
+                    sheetData.Append(newRow);
+                }
+            }
+            Console.WriteLine("\nThank you for using the Excel Editor App! Run the program again to continue using...");
         }
     }
 }
