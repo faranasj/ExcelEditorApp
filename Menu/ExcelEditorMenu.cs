@@ -12,6 +12,7 @@ namespace ExcelEditorApp.Menu
         public static void EditorMenu()
         {
             Console.WriteLine("Welcome to the Excel File Editor App!");
+            Console.WriteLine("");
 
             var flag = true;
 
@@ -24,19 +25,24 @@ namespace ExcelEditorApp.Menu
                 switch (option)
                 {
                     case "1":
-                        CreateExcelFile.CreateNewFile(); 
+                        CreateExcelFile.CreateNewFile();
+                        Console.WriteLine("");
                         break;
                     case "2":
-                        ReadExcelFile.ReadFile(); 
+                        ReadExcelFile.ReadFile();
+                        Console.WriteLine("");
                         break;
                     case "3":
                         WriteToExcelFile.WriteToFile();
+                        Console.WriteLine("");
                         break;
                     case "0":
                         flag = false;
+                        Console.WriteLine("Thank you for using the Excel Editor App...");
                         break;
                     default:
                         Console.WriteLine("Invalid input!");
+                        Console.WriteLine("");
                         break;
                 }
             }

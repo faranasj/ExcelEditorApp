@@ -8,8 +8,9 @@ namespace ExcelEditorApp.ExcelOperations
     {
         public static void ReadFile ()
         {
-            Console.WriteLine("Enter the excel filename you want to view: ");
-            string filePath = Console.ReadLine()!;
+            Console.Write("Enter the excel filename you want to view: ");
+            string file = Console.ReadLine()!;
+            string filePath = $"{file}.xlsx";
 
             using (SpreadsheetDocument doc = SpreadsheetDocument.Open(filePath, false))
             {
@@ -24,7 +25,7 @@ namespace ExcelEditorApp.ExcelOperations
                 }
                 else
                 {
-                    Console.WriteLine("This is the current content of your file");
+                    Console.WriteLine("\nThis is the current content of your file");
 
                     foreach (Row row in sheetData.Elements<Row>())
                     {

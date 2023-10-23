@@ -12,15 +12,16 @@ namespace ExcelEditorApp.ExcelOperations
     {
         public static void WriteToFile()
         {
-            Console.WriteLine("Enter the excel filename you want to view: ");
-            string filePath = Console.ReadLine()!;
+            Console.Write("Enter the excel filename you want to write to: ");
+            string file = Console.ReadLine()!;
+            string filePath = $"{file}.xlsx";
 
             Console.WriteLine("\nWould you like to add a new row? (y/n)");
             string response = Console.ReadLine()!;
 
             if (response.ToLower() == "y")
             {
-                Console.WriteLine("Enter data separated by commas (e.g., 1,Jane,Doe):");
+                Console.WriteLine("Enter data separated by commas (e.g., 1,Jane,Doe): ");
                 string[] rowData = Console.ReadLine()!.Split(',');
 
                 using (SpreadsheetDocument doc = SpreadsheetDocument.Open(filePath, true))
@@ -43,6 +44,9 @@ namespace ExcelEditorApp.ExcelOperations
                     }
                     sheetData.Append(newRow);
                 }
+                Console.WriteLine("");
+                Console.WriteLine("Data added successfully...");
+                Console.WriteLine("");
             }
         }
     }

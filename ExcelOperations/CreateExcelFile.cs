@@ -9,7 +9,7 @@ namespace ExcelEditorApp.ExcelOperations
     {
         public static void CreateNewFile()
         {
-            Console.WriteLine("Please provide the filename of your excel file (e.g. your-file.xlsx).\\nDisclaimer - If no filename is given, 'your-file.xlsx' is used. Additionally, if file does not exist, a new one is created.");         
+            Console.Write("Please provide the filename of your excel file (e.g. your-file.xlsx).\nDisclaimer - If no filename is given, 'your-file.xlsx' is used. Additionally, if file does not exist, a new one is created.\nFilename: ");         
             string filePath = Console.ReadLine()!;
 
             if (filePath == string.Empty)
@@ -30,6 +30,7 @@ namespace ExcelEditorApp.ExcelOperations
                     sheets.Append(sheet);
                     workbookPart.Workbook.Save();
                 }
+                Console.WriteLine($"Excel file with filename {filePath} created successfully...");
             }
         }
     }
